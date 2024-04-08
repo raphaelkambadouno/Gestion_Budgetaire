@@ -1,16 +1,15 @@
-import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
     return (
         <div className="register-page">
             <div className="register-box">
-                <div className="register-logo">
-                    <a href="../../index2.html"><b>Budget</b>Tracker</a>
-                </div>
+                <div className="register-logo"><b>Budget</b>Tracker</div>
+
                 <div className="card">
                     <div className="card-body register-card-body">
                         <p className="login-box-msg">Register a new membership</p>
-                        <form action="../../index.html" method="post">
+                        <form method="post">
                             <div className="input-group mb-3">
                                 <input type="text" className="form-control" placeholder="Full name" />
                                     <div className="input-group-append">
@@ -43,14 +42,13 @@ const Register = () => {
                                         </div>
                                     </div>
                             </div>
-                            <div className="row justify-content-between">
-
-                                <div className="col-4">
-                                    <button type="submit" className="btn btn-primary btn-block">Register</button>
-                                </div>
-                                <div className="col-2 mt-2">
-                                    <a href="login.html">Login</a>
-                                </div>
+                            <div>
+                                <button className="btn btn-primary btn-block">
+                                    <NavLink to="/dashbord" className="text-white">Register</NavLink>
+                                </button>
+                            </div>
+                            <div className="d-flex justify-content-center">
+                                <NavLink to="/login" className="mt-3">You have an account ? Login</NavLink>
                             </div>
                         </form>
                         

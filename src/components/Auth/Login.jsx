@@ -1,17 +1,15 @@
-import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
     return (
         <div className='login-page'>
             <div className="login-box">
-                <div className="login-logo">
-                    <a href="index2.html"><b>Budget</b>Tracker</a>
-                </div>
+                <div className="login-logo"><b>Budget</b>Tracker</div>
 
                 <div className="card">
                     <div className="card-body login-card-body">
                         <p className="login-box-msg">Sign in to start your session</p>
-                        <form action="index3.html" method="post">
+                        <form method="post">
                             <div className="input-group mb-3">
                                 <input type="email" className="form-control"
                                     placeholder="Email" />
@@ -30,22 +28,17 @@ const Login = () => {
                                         </div>
                                     </div>
                             </div>
-                            <div className="row">
-                                
-
-                                <div className="col-4">
-                                    <button type="submit"
-                                        className="btn btn-primary btn-block">Sign
-                                        In</button>
-                                </div>
-
+                            <div>
+                                <button className="btn btn-primary btn-block">
+                                    <NavLink to="/dashbord" className="text-white">Sign In</NavLink>
+                                </button>
                             </div>
                         </form>
                         
-                        <p className="mb-0">
-                            <a href="register.html" className="text-center">Register a
-                                new membership</a>
-                        </p>
+                        <div className="d-flex justify-content-center">
+                            <NavLink to="/register" className="mt-3">Register a 
+                                new membership</NavLink>
+                        </div>
                     </div>
 
                 </div>

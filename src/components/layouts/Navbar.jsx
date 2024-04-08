@@ -1,4 +1,6 @@
-import Aside from "./Aside"
+import Aside from "./Aside";
+import User from 'admin-lte/dist/img/user2-160x160.jpg';
+
 const Navbar = () => {
     return (
         <>
@@ -16,7 +18,7 @@ const Navbar = () => {
 
                     <li className="nav-item dropdown">
                         <a className="nav-link" data-toggle="dropdown" href="#">
-                                <img width={38} src="dist/img/user2-160x160.jpg"
+                                <img width={38} src={User}
                             className="img-circle elevation-2 navbar-img" alt="User Image" />
                             <span className="info ml-2">Test name</span>
                         </a>
