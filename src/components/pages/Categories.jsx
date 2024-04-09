@@ -1,19 +1,6 @@
-import Navbar from "../layouts/Navbar";
-import Footer from "../layouts/Footer";
-
 const Categories = () => {
     return (
-        <div className='wrapper'>
-        <Navbar />
-        <div className="content-wrapper">
-            <section className="content-header">
-                <div className="container-fluid pt-5">
-                    <p className='bg-secondary col-6 text-center m-auto p-5'>CATEGORIES</p>
-                </div>
-            </section>
-        </div>
-        <Footer/>
-    </div> 
+        <p className='bg-secondary col-6 text-center m-auto p-5'>CATEGORIES</p>
     );
 }
 
