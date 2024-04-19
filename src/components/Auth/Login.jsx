@@ -1,17 +1,40 @@
-import { NavLink } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { auth } from "../../DatabaseConfig";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
+    const navigate = useNavigate()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [notification, setNotification] = useState("")
+    const {getUserInfo, setUser} = useContext(AuthContext)
+
+    const signIn = async (e)=>{
+        e.preventDefault()
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            const userInfo = await getUserInfo(auth.currentUser.uid)
+            const data = {userInfo, ...auth.currentUser}
+            localStorage.setItem('user', JSON.stringify(data))
+            setUser(data)
+            navigate('/')
+        } catch (error) {
+            setNotification("Erreur d'authentification")
+            alert('Indentifiant incorrect')
+        }
+    }
     return (
         <div className='login-page'>
             <div className="login-box">
                 <div className="login-logo"><b>Budget</b>Tracker</div>
-
                 <div className="card">
                     <div className="card-body login-card-body">
                         <p className="login-box-msg">Sign in to start your session</p>
-                        <form method="post">
+                        <form onSubmit={signIn} method="post">
                             <div className="input-group mb-3">
-                                <input type="email" className="form-control"
+                                <input value={email} onChange={(e)=>setEmail(e.target.value)} type="email" className="form-control"
                                     placeholder="Email" />
                                     <div className="input-group-append">
                                         <div className="input-group-text">
@@ -20,7 +43,7 @@ const Login = () => {
                                     </div>
                             </div>
                             <div className="input-group mb-3">
-                                <input type="password" className="form-control"
+                                <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" className="form-control"
                                     placeholder="Password" />
                                     <div className="input-group-append">
                                         <div className="input-group-text">
@@ -29,8 +52,8 @@ const Login = () => {
                                     </div>
                             </div>
                             <div>
-                                <button className="btn btn-primary btn-block">
-                                    <NavLink to="/dashbord" className="text-white">Sign In</NavLink>
+                                <button type="submit" className="btn btn-primary btn-block">
+                                    Se connecter
                                 </button>
                             </div>
                         </form>

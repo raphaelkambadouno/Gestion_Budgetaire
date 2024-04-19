@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import Aside from "./Aside";
-import User from 'admin-lte/dist/img/user2-160x160.jpg';
+import UserImg from 'admin-lte/dist/img/user2-160x160.jpg';
+import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
+    let {user, logOut} = useContext(AuthContext)
     return (
         <>
             <nav
@@ -18,13 +21,13 @@ const Navbar = () => {
 
                     <li className="nav-item dropdown">
                         <a className="nav-link" data-toggle="dropdown" href="#">
-                                <img width={38} src={User}
+                                <img width={38} src={UserImg}
                             className="img-circle elevation-2 navbar-img" alt="User Image" />
-                            <span className="info ml-2">Test name</span>
+                            <span className="info ml-2">{user && user.userInfo.name}</span>
                         </a>
                         <div
                             className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                            <a href="#" className="dropdown-item">
+                            <a onClick={logOut} href="#" className="dropdown-item">
                                 <i className="fas fa-power-off mr-2"></i>
                                 Déconnexion
                             </a>
